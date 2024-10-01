@@ -5,9 +5,7 @@ body {
 svg {
   position: absolute;
 }
-.animation {
-  animation-fill-mode: forwards;
-}
+
 .bus{
   position: absolute;
   background-image: url("bus.png");     
@@ -16,17 +14,25 @@ svg {
   background-repeat: no-repeat;
 }
 
+.shuttle{
+  position: absolute;
+  background-image: url("shuttle.png");     
+  height: 36px;
+  width: 108px;
+  background-repeat: no-repeat;
+}
+
 .bus1 {
   position: absolute;
   top: 10px;
-  animation: moveBus1 5s ease-in-out;
+  animation: moveBus1 5s ease-in-out forwards;
   offset-path: path(
     "M1 347.763L809.433 429.811C839.436 388.084 915.427 333.557 979.371 449.268C1143.21 468.725 1286.05 516.988 1323 369.095C1353 249 1352.3 209.105 1353 150.5L1381 64L1391 0.5");
   animation-delay:2s;
 }
 .bus2 {
   top: 0px;
-  animation: moveBus2 8s ease-in-out;
+  animation: moveBus2 8s ease-in-out forwards;
   offset-path: path(
     "M1 356.763L809.433 438.811L880 447.5C899.333 445.833 934.5 453.2 920.5 496C914.5 546 911.333 581.5 910.5 593L948 599.5C970.833 624.667 1038.9 664.9 1128.5 624.5C1172.9 629.7 1209 635 1221.5 637C1249.5 642.167 1309.6 640.2 1326 591C1339.6 541 1344.33 522.5 1345 519.5C1329.33 506.667 1299.4 468.8 1305 420C1331 377.2 1333.17 348.167 1331 339L1355 169.5L1397.5 1"
   );
@@ -34,7 +40,8 @@ svg {
 }
 .bus3 {
   top: 380px;
-  left: 1550px;
+  left: 1520px;
+  rotate: -72deg;
 }
 img {
   width: 1920px;
@@ -55,7 +62,11 @@ img {
   64% {
     offset-distance: 51%;
   }
+  99% {
+      opacity: 1;
+  }
   100% {
+    opacity: 0;
     offset-distance: 100%;
   }
 }
@@ -70,7 +81,11 @@ img {
   62% {
     offset-distance: 56%;
   }
+  99% {
+    opacity: 1;
+  }
   100% {
+    opacity: 0;
     offset-distance: 100%;
   }
 }
