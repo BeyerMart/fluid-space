@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Animation</title>
+  <style>
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      margin: 0;
+    }
+    svg {
+      overflow: visible;
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="-10 -10 173 61">
+    <path d="M153,20.89c0-45.88-74.95,0-74.95,0S.5,66.76.5,20.89s77.54,0,77.54,0S153,66.76,153,20.89Z" fill="none" stroke="#000" vector-effect="non-scaling-stroke" class="infinity" />
+    <circle r="5" cx="0" cy="0" fill="purple" class="circle" />
+  </svg>
+
+  <!-- Include GSAP library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+
+  <script>
+    // Query DOM Elements
+    const path = document.querySelector('.infinity');
+    const circle = document.querySelector('.circle');
+
+    // Create an object that gsap can animate
+    const val = { distance: 0 };
+
+    // Create a tween
+    gsap.to(val, {
+      // Animate from distance 0 to the total distance
+      distance: path.getTotalLength(),
+      // Loop the animation
+      repeat: -1,
+      // Make the animation lasts 5 seconds
+      duration: 5,
+      // Function call on each frame of the animation
+      onUpdate: () => {
+        // Query a point at the new distance value
+        const point = path.getPointAtLength(val.distance);
+        // Update the circle coordinates
+        circle.setAttribute('cx', point.x);
+        circle.setAttribute('cy', point.y);
+      }
+    });
+  </script>
+</body>
+</html>
